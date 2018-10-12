@@ -5,14 +5,18 @@ class PageRules
     public function getUrl()
     {
         $url = $_SERVER['REQUEST_URI'];//получаем текущий адрес
-        $url = trim($request->pathInfo, '/'); // удаляем слеши из начала и конца url
-        preg_match_all('/\d+/', $url, $mas);
+        $url = trim($url, '/');
         switch($url)
         {
-            case NULL:
+            case "":
                 require_once "views/site/index.php";
+                break;
+            case "registration":
+                require_once "views/site/registrationview.php";
+                break;
             default:
                 require_once "views/site/404.php";
+                break;
         }
     }
 }
