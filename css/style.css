@@ -107,3 +107,69 @@ footer
 {
     font-size: 15px;
 }
+
+
+
+
+.startdiv
+{
+    width: 70%;
+    border: 1px solid Red;
+    border-radius: 10px;
+    margin: 0 auto 0;
+    height: 300px;
+}
+.divbutton
+{
+    width: 50%;
+    margin: 0 auto 0;
+}
+a.buttonstart
+{   
+    cursor: pointer;
+    padding: 0 15px 0 15px;
+    text-indent: 0px!important;
+    position: relative;
+    display: inline-block;
+    height: 2.5em;
+    width: 100%;
+    font-size: 1.5em;
+    line-height: 2.5em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #777;
+    color: #fff;
+    outline: none;
+    border: 2px solid dodgerblue;
+    border-radius: 5px;
+    box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em black;
+    background: rgb(41, 64, 230);
+    background: -moz-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+    background: -webkit-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+    background: -o-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+    background: -ms-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+    background: linear-gradient(0deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+}
+a.buttonstart:hover
+{
+    background: rgb(39, 28, 129);
+    background: -moz-linear-gradient(270deg, rgb(39, 28, 129) 0%, rgb(94, 202, 255) 71%);
+    background: -webkit-linear-gradient(270deg, rgb(39, 28, 129) 0%, rgb(94, 202, 255) 71%);
+    background: -o-linear-gradient(270deg, rgb(39, 28, 129) 0%, rgb(94, 202, 255) 71%);
+    background: -ms-linear-gradient(270deg, rgb(39, 28, 129) 0%, rgb(94, 202, 255) 71%);
+    background: linear-gradient(0deg, rgb(39, 28, 129) 0%, rgb(94, 202, 255) 71%);
+
+}
+a.buttonstart:active
+{
+    top: .1em;
+    left: .1em;
+    box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+    background: rgb(41, 64, 230);
+    background: -moz-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+    background: -webkit-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+    background: -o-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+    background: -ms-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+    background: linear-gradient(0deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+}

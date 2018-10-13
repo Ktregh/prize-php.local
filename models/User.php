@@ -5,32 +5,28 @@ class User extends Db
     private function checkUser($login, $password)
     {
         $db = new Db;
-        $query = "SELECT * FROM `profile` WHERE `login` = {?}";
+        $query = "SELECT * FROM `profile` WHERE `name` = {?}";
         $user = $db->selectRow($query, array($login));
-        if(!$user["password"]) return false;
-        if($user["regcode"] == 1) return true;
-        else return false;
+        return true;
     }       
     public function isAuth()
     {
-        session_start();
         $login = $_SESSION["login"];
         $password = $_SESSION["password"];
         return $this->checkUser($login, $password);
     }
     public function login($login, $password)
     {
-        $password = md5($password);
+        //$password = md5($password);
         if($this->checkUser($login,$password))
         {
-            session_start();
             $_SESSION["login"] = $login;
             $_SESSION["password"] = $password;
             return true;
         }
         else return false;
     }
-    public function getRegCode($login)
+    /*public function getRegCode($login)
     {
         $regcode = md5($login);
         return $regcode;
@@ -42,15 +38,15 @@ class User extends Db
         $login2 = $db->selectCell($query, array($login));
         if($login2) return false;
         else return true;
-    }
+    }*/
     public function getName($login)
     {
         $db = new Db;
-        $query = "SELECT `name` FROM `profile` WHERE `login` = {?}";
+        $query = "SELECT `name` FROM `user` WHERE `login` = {?}";
         $name = $db->selectCell($query, array($login));
         return $name;
     }
-    public function getPassword()
+    /*public function getPassword()
     {
         $password = "";
         $arr = array(
@@ -67,6 +63,6 @@ class User extends Db
        '9', '0', '#', '!', "?", "&");
         for ($i = 0; $i < 10; $i++)$password .= $arr[mt_rand(0, count($arr) - 1)];
         return $password;
-    }
+    }*/
 }
  

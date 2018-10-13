@@ -47,3 +47,4 @@
         </table>
     </form>
 </div>
+<?php var_dump($_SESSION);?>
