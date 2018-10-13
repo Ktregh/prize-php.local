@@ -9,13 +9,16 @@ class PageRules
         switch($url)
         {
             case "":
-                require_once "views/site/index.php";
+                include_once (ROOT.'/views/site/index.php');
                 break;
             case "registration":
-                require_once "views/site/registrationview.php";
+                include_once (ROOT.'/views/site/registrationview.php');
+                break;
+            case "index.php":
+                include_once (ROOT.'/views/site/index.php');
                 break;
             default:
-                require_once "views/site/404.php";
+                include_once (ROOT.'/views/site/404.php');
                 break;
         }
     }

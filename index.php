@@ -1,3 +1,3 @@
 <?php
-
-    require_once "views/layouts/main.php";
+    include_once ('config.php');
+    include_once (ROOT.'/views/layouts/main.php');

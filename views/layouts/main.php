@@ -1,3 +1,7 @@
+<?php
+    define('ROOT', $_SERVER['DOCUMENT_ROOT']);
+    
+    ?>
 <!DOCTYPE html>
 <html lang="ru">
     <head>

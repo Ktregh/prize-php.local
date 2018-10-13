@@ -1,5 +1,5 @@
 <div class="logindiv">
-    <form action="login.php" method="post" id="authform">
+    <form action="/controllers/login.php" method="post" class="mineform">
         <table>
             <tbody>
                 <tr>
