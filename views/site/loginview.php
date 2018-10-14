@@ -1,5 +1,5 @@
 <div class="logindiv">
-    <form action="/controllers/login.php" method="post" class="mineform">
+    <form action="/controllers/LoginController.php" method="post" class="mineform">
         <table>
             <tbody>
                 <tr>
@@ -47,4 +47,3 @@
         </table>
     </form>
 </div>
-<?php var_dump($_SESSION);?>

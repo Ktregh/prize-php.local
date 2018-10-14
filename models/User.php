@@ -5,9 +5,16 @@ class User extends Db
     private function checkUser($login, $password)
     {
         $db = new Db;
-        $query = "SELECT * FROM `profile` WHERE `name` = {?}";
+        $query = "SELECT * FROM `user` WHERE `name` = {?}";
         $user = $db->selectRow($query, array($login));
-        return true;
+        if($user)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }       
     public function isAuth()
     {
@@ -20,8 +27,29 @@ class User extends Db
         //$password = md5($password);
         if($this->checkUser($login,$password))
         {
+            
             $_SESSION["login"] = $login;
             $_SESSION["password"] = $password;
+            $_SESSION["bonus"] = $this->getBonus($login);
+            return true;
+        }
+        else return false;
+    }
+    public function getBonus($login)
+    {
+        $db = new Db;
+        $query = "SELECT * FROM `user` WHERE `name` = {?}";
+        $user = $db->selectRow($query, array($login));
+        return $user['bonus'];
+    }       
+    public function plusBonus($login, $change)
+    {
+        $db = new Db;
+        $bonus = $this->getBonus($login);
+        $bonus += $change;
+        $query = "UPDATE`user` SET bonus = '.$bonus.' WHERE `name` = {?}";
+        if($db->query($query, array($login)))
+        {
             return true;
         }
         else return false;

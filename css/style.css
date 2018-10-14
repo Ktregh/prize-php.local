@@ -15,7 +15,7 @@ header h1
     text-align: center;
     margin-top: 10px;
     border-bottom: 1px dotted Black;
-    height: 200px;
+    
 }
 .wrapper
 {
@@ -23,7 +23,6 @@ header h1
     min-height: 100%;
     width: 1200px;
     margin: 0 auto 0;
-    border: 1px solid red;
 }
 .content
 {
@@ -172,4 +171,8 @@ a.buttonstart:active
     background: -o-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
     background: -ms-linear-gradient(270deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
     background: linear-gradient(0deg, rgb(41, 64, 230) 0%, rgb(94, 168, 255) 71%);
+}
+button
+{
+    padding: 5px;
 }

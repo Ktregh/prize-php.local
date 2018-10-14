@@ -18,10 +18,13 @@
                 <h1>
                     Сайт с призами
                 </h1>
+                <?php 
+                    include_once(ROOT.'/views/site/userinfoview.php');
+                ?>
             </header>
             <div class="content">
                 <?php 
-                    require_once "views/site/pagerulesview.php";
+                    include_once(ROOT.'/views/site/pagerulesview.php');
                 ?>
             </div>
             <footer class="footer">
