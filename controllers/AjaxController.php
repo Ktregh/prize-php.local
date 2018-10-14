@@ -3,6 +3,8 @@
     include_once (ROOT.'/models/User.php');
     if(isset($_POST['firststep']))
     {
+        $first = 2;
+        $second = 2;
         include_once (ROOT.'/models/Money.php');
         $money = new Money;
         $sum = $money->getMoneySum(); //проверка наличия денег в кассе
@@ -10,36 +12,47 @@
         {    
             $first = 1;
         }
-        $type = 2;
-        //$type = rand($first,3); // получаем тип приза 1 - деньги; 2 - балы; 3 - предмет
+        include_once (ROOT.'/models/Prize.php');
+        $prize = new Prize;
+        $quantity = $prize->checkPrizeQuantity();//проверка наличия призов
+        if($quantity)
+        {
+            $second = 3;
+        }
+        $type = 3;
+        //$type = rand($first, $second); // получаем тип приза 1 - деньги; 2 - балы; 3 - предмет
         if($type == 1) //приз - деньги
         {
             if($sum < 100)
             {
-                $data['moneyprize'] = rand(1, $sum); //если денег меньше 100
+                $data['prize'] = rand(1, $sum); //если денег меньше 100
             }
             else
             {
-                $data['moneyprize'] = rand(1, 100);
+                $data['prize'] = rand(1, 100);
             }
-            $_SESSION['moneyprize'] = $data['moneyprize'];
-            $money->minusMoneySum($data['moneyprize']);
+            $_SESSION['prize'] = $data['prize'];
+            $money->minusMoneySum($data['prize']);
             $data['type'] = $type;
             echo json_encode($data);
         }
         if($type == 2) //приз - бонусы
         {
-            $data['bonusprize'] = rand(100, 200); 
+            $data['prize'] = rand(100, 200); 
             $user = new User;
             $login = $_SESSION['login'];
-            $bonussum = $user->getBonus($login);
-            $bonusresult = $user->plusBonus($login, $data['bonusprize']);
-            
-            
+            //$bonussum = $user->getBonus($login);
+            $data['result'] = $user->plusBonus($login, $data['prize']);
+            $data['bonus'] = $user->getBonus($login);
+            $data['type'] = $type;
+            echo json_encode($data);
         }
         if($type == 3) //приз - предметы
         {
-        
+            $thing = $prize->getPrize();
+            $data['prize'] = $thing['prize'];
+            $data['type'] = $type;
+            echo json_encode($data);
         }
     }
     if(isset($_POST['changemoney']))

@@ -1,5 +1,5 @@
 <div class="startdiv">
-    <div class="divbutton" style="margin-top: 100px;">
+    <div class="divbutton" style="margin-top: 100px;" id="startbutton">
         <a class="buttonstart" id="start">
             Испытать удачу!
         </a>
@@ -11,13 +11,23 @@
             <button id="getmoney">Получить на счёт</button>
             <button id="changemoney">Поменять на балы (1 к 2)</button>
         </div>
+        <div id="prizediv" style="display: none;">
+            <button id="getprize">Получить приз</button>
+            <button id="refuseprize">Отказаться от приза</button>
+        </div>
     </div>
+   
 </div>
+ <div class="divbutton" style="display: none; margin-top: 50px;" id="mainbutton">
+        <a class="buttonstart" href="/">
+            На главную
+        </a>
+    </div>
 <script>
     var type = 0;
     $('#start').click(function()
     {
-        $('.divbutton').css({'display' : 'none'});
+        $('#startbutton').remove();
         var images = [{
             url: "/img/1.png", // Картинка
             timeout: 200 // Задержка для картинки
@@ -51,7 +61,7 @@
         setTimeout(function ()
         {
             getPrize();
-        }, 3000);
+        }, 1);
         function getPrize()
         {
             $.ajax
@@ -66,7 +76,10 @@
              }).done(function(data)
              {
                 type = data.type;
-                moneyprize = data.moneyprize;
+                prize = data.prize;
+                alert(prize);
+                /*result = data.result;
+                bonus = data.bonus;*/
                 getPrize2();
            });
             
@@ -77,15 +90,19 @@
             {
                case 1:
                    $('#imgprize').attr('src', '/img/1.png');
-                   $('#textp').html('Вы выиграли денежный приз - ' + moneyprize + ' денег!');
+                   $('#textp').html('Вы выиграли денежный приз - ' + prize + ' денег!');
                    $('#moneydiv').css({'display' : 'block'});
                    break;
                 case 2:
                     $('#imgprize').attr('src', '/img/2.png')
-                    $('#textp').html('Вы выиграли балы');
-                   break;
+                    $('#textp').html('Вы выиграли баллы - ' + prize + ' баллов! У Вас на счету ' + bonus + ' баллов!');
+                    $('#bonus').html(bonus);
+                    $('#mainbutton').css({'display' : 'block'});
+                    break;
                 case 3:
-                    $('#imgprize').attr('src', '/img/3.png')
+                    $('#imgprize').attr('src', '/img/3.png');
+                    $('#textp').html('Вы выиграли приз - ' + prize);
+                    $('#prizediv').css({'display' : 'block'});
                     break;
                default:
                      break;
@@ -109,6 +126,8 @@ $('#changemoney').click(function()
         var bonus = data.bonus;
         $('#bonus').html(bonus);
         $('#textp').html(result + '. У Вас на счету ' + bonus + ' баллов!');
+        $('#mainbutton').css({'display' : 'block'});
+        $('#moneydiv').remove();
     });
 });
 </script>

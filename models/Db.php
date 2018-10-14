@@ -3,7 +3,6 @@
 class Db
 {
     private $db;
-    private $mysqli;
     private $sym_query = "{?}";
     public function __construct()
     {
