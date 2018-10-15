@@ -33,16 +33,6 @@
                         <input id="enter" type="submit" name="enter" value="Войти" />
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <a href="respass">Забыли пароль?</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <a href="registration">Регистрация</a>						
-                    </td>
-                </tr>
             </tbody>
         </table>
     </form>
